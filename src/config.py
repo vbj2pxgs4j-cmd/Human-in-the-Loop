@@ -109,6 +109,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = Field(
         default_factory=lambda: [
             "https://investment-assistant-alpha.vercel.app",
+            "https://human-in-the-loop-production.up.railway.app",
             "https://web-production-a65a2102.up.railway.app",
             "http://localhost:3000",
             "http://localhost:8000",

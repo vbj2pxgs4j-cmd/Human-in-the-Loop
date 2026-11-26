@@ -14,8 +14,8 @@ A dual-loop, multi-agent AI system with strict Human-in-the-Loop (HITL) controls
 ## Live Deployments
 
 - **Frontend Interface (Vercel):** [https://investment-assistant-alpha.vercel.app](https://investment-assistant-alpha.vercel.app)
-- **Backend API & Swagger Docs (Railway):** [https://web-production-a65a2102.up.railway.app/docs](https://web-production-a65a2102.up.railway.app/docs)
-- **Health Check Endpoint:** `https://web-production-a65a2102.up.railway.app/api/health`
+- **Backend API & Swagger Docs (Railway):** [https://human-in-the-loop-production.up.railway.app/docs](https://human-in-the-loop-production.up.railway.app/docs)
+- **Health Check Endpoint:** `https://human-in-the-loop-production.up.railway.app/api/health`
 
 ---
 
