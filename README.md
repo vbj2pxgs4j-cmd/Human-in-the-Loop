@@ -82,6 +82,67 @@ flowchart TD
 
 ---
 
+## Official Sources Corpus (Milestone 1 Verified Links)
+
+The system sources and verifies all factual answers exclusively from an official Milestone 1 public corpus comprising **35 verified URLs** across Indian investment platforms, mutual fund schemes, market depositories, and statutory regulators:
+
+### 1. Mutual Fund Scheme Factsheets & Operations (Groww & AMFI)
+| # | Document Category | Source Entity | Canonical Reference URL |
+| :-: | :--- | :--- | :--- |
+| 1 | Scheme Factsheet: HDFC Mid-Cap Opportunities Fund (TER, Exit Load, Benchmark) | Groww / HDFC AMC | https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth |
+| 2 | Scheme Factsheet: HDFC Small Cap Fund (TER, Exit Load, Minimum SIP) | Groww / HDFC AMC | https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth |
+| 3 | Scheme Factsheet: HDFC Top 100 / Large Cap Fund (Category, Index) | Groww / HDFC AMC | https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth |
+| 4 | Scheme Factsheet: HDFC ELSS Tax Saver Fund (80C Lock-in, TER) | Groww / HDFC AMC | https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth |
+| 5 | Scheme Factsheet: HDFC Gold ETF Fund of Fund (Domestic Gold FoF) | Groww / HDFC AMC | https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth |
+| 6 | Mutual Fund Operations Hub & Statement Procedures | Groww Platform | https://groww.in/mutual-funds |
+| 7 | Investor Education & Mutual Fund FAQ Guide | AMFI India | https://www.amfiindia.com/investor-corner/knowledge-center |
+| 8 | Industry Total Expense Ratio (TER) Disclosures | AMFI India | https://www.amfiindia.com/research-information/ter-data |
+| 9 | Mutual Fund Categorization & Rationalization Circular | SEBI | https://www.sebi.gov.in/legal/circulars/oct-2017/categorization-and-rationalization-of-mutual-fund-schemes_36199.html |
+| 10 | Investor Awareness, Education & Redressal Portal | SEBI | https://investor.sebi.gov.in |
+
+### 2. Platform Brokerage, Trading & F&O Charges (Groww Platform)
+| # | Document Category | Source Entity | Canonical Reference URL |
+| :-: | :--- | :--- | :--- |
+| 11 | Comprehensive Trading & Investment Pricing Schedule | Groww Platform | https://groww.in/pricing |
+| 12 | Equity Delivery Brokerage Rules (Brokerage-free / ₹20 cap) | Groww Platform | https://groww.in/pricing/equity |
+| 13 | Equity Intraday Brokerage Rates (Flat ₹20 or 0.05%) | Groww Platform | https://groww.in/pricing/intraday |
+| 14 | Futures & Options (F&O) Derivatives Tariff | Groww Platform | https://groww.in/pricing/fno |
+| 15 | Interactive Brokerage & Hidden Charges Calculator | Groww Platform | https://groww.in/calculators/brokerage-calculator |
+| 16 | Demat Account Opening & AMC Schedule | Groww Platform | https://groww.in/pricing/demat |
+| 17 | Customer Terms & Conditions Agreement | Groww Platform | https://groww.in/terms-and-conditions |
+| 18 | Platform Regulatory & Entity Disclosures | Groww Platform | https://groww.in/regulatory-disclosures |
+
+### 3. Depository Participant (DP), Demat & AMC Tariff (CDSL & Platform)
+| # | Document Category | Source Entity | Canonical Reference URL |
+| :-: | :--- | :--- | :--- |
+| 19 | CDSL Tariff & Depository Participant Fee Structure | CDSL India | https://www.cdslindia.com/charges |
+| 20 | CDSL Investor Services & Demat Disclosures | CDSL India | https://www.cdslindia.com/investors |
+| 21 | DP Charges Breakdown (Flat ₹13.50 + GST per company/day) | Groww Platform | https://groww.in/help/my-account/charges/dp-charges-on-groww |
+| 22 | Basic Services Demat Account (BSDA) Eligibility & Thresholds | Groww Platform | https://groww.in/help/my-account/charges/what-is-bsda-account |
+| 23 | Collateral Margin Pledge & Unpledge Fee Schedule | Groww Platform | https://groww.in/help/my-account/charges/pledge-charges |
+| 24 | Off-Market Securities Transfer & DIS Rules | Groww Platform | https://groww.in/help/my-account/charges/off-market-transfer |
+
+### 4. Statutory & Regulatory Levies (SEBI, Government & Exchanges)
+| # | Document Category | Source Entity | Canonical Reference URL |
+| :-: | :--- | :--- | :--- |
+| 25 | SEBI Turnover & Regulatory Fees Schedule | SEBI | https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doCharges=yes |
+| 26 | Securities Transaction Tax (STT) Rules & Rates | Income Tax Dept | https://incometaxindia.gov.in/Pages/acts/securities-transaction-tax.aspx |
+| 27 | Unified Stamp Duty Rules on Transfer of Securities | Ministry of Finance | https://financialservices.gov.in/stamp-duty |
+| 28 | Goods & Services Tax (GST 18%) on Financial Services | CBIC / GST Council | https://cbic-gst.gov.in |
+| 29 | NSE India Transaction Charges Schedule | NSE India | https://www.nseindia.com/trade/transaction-charges |
+| 30 | BSE India Transaction Charges Schedule | BSE India | https://www.bseindia.com/static/about/charges.aspx |
+| 31 | Investor Protection Fund (IPF) Levy Schedule | NSE India | https://www.nseindia.com/invest/investor-protection-fund-trust |
+
+### 5. Operational Workflows, Tax & Incidental Charges
+| # | Document Category | Source Entity | Canonical Reference URL |
+| :-: | :--- | :--- | :--- |
+| 32 | Capital Gains Statement Download Workflow | Groww Platform | https://groww.in/help/my-account/reports/how-to-download-capital-gains-statement |
+| 33 | Call & Trade / Auto-Square-off Desk Charges | Groww Platform | https://groww.in/help/my-account/charges/call-and-trade-charges |
+| 34 | Delayed Payment Penal Charges (Interest on Debit Balances) | Groww Platform | https://groww.in/help/my-account/charges/delayed-payment-charges |
+| 35 | Payment Gateway (Net Banking vs UPI) Fee Schedule | Groww Platform | https://groww.in/help/my-account/charges/deposit-and-withdrawal-charges |
+
+---
+
 ## Project Structure
 
 ```
