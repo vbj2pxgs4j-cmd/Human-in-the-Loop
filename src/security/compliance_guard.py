@@ -17,13 +17,15 @@ class ComplianceGuard:
     # 1. Advisory & Trading Recommendation Patterns
     ADVISORY_PATTERNS = [
         # Explicit recommendation directives for stocks, funds, or assets
-        r"\b(?:recommend|suggest)\b.*?\b(?:stocks?|shares?|mutual\s+funds?|funds?|etfs?|scrips?|portfolio)\b",
-        r"\b(?:stocks?|shares?|mutual\s+funds?|funds?|etfs?)\b.*?\b(?:recommend|suggest|advice|tips?)\b",
-        r"\b(?:should\s+i|can\s+i|shall\s+we)\s+(?:buy|sell|hold|accumulate|exit|invest\s+in)\b",
-        r"\b(?:which|what)\s+(?:stock|share|company|fund|mutual\s+fund)\s+(?:to|should\s+i)\s+(?:buy|sell|invest)\b",
-        r"\b(?:best|top|good)\s+(?:stocks?|shares?|funds?|mutual\s+funds?)\s+(?:to\s+buy|for\s+(?:tomorrow|2026|today|investment))\b",
-        r"\b(?:stock\s+tips?|trading\s+calls?|intraday\s+tips?|multibaggers?)\b",
+        r"\b(?:recommend|suggest|advice|advise)\b.*?\b(?:stocks?|shares?|mutual\s+funds?|funds?|etfs?|scrips?|portfolio)\b",
+        r"\b(?:stocks?|shares?|mutual\s+funds?|funds?|etfs?)\b.*?\b(?:recommend(?:ation)?s?|suggest(?:ion)?s?|advice|advise|tips?|picks?)\b",
+        r"\b(?:should\s+i|can\s+i|shall\s+we)\s+(?:buy|sell|hold|accumulate|exit|invest\s+in|purchase)\b",
+        r"\b(?:which|what)\s+.*?\b(?:stock|share|company|fund|mutual\s+fund)\s+.*?\b(?:to|should\s+i|will|can)\s+(?:buy|sell|invest|purchase|surge|gain|perform)\b",
+        r"\b(?:best|top|good)\s+.*?\b(?:stocks?|shares?|funds?|mutual\s+funds?)\s+.*?\b(?:to\s+buy|for\s+(?:tomorrow|2026|today|investment)|recommendations?)\b",
+        r"\b(?:stock\s+tips?|trading\s+calls?|intraday\s+tips?|multibaggers?|stock\s+picks?)\b",
         r"\b(?:target\s+price|stop\s*loss|entry\s+levels?|price\s+targets?)\b",
+        r"\b(?:is|are)\s+.*?\b(?:good|bad|worth)\s+(?:a\s+)?(?:buy|investment|purchase)\b",
+        r"\b(?:will|can)\s+(?:nifty|sensex|banknifty|market)\s+(?:cross|hit|reach|fall|drop|touch|break)\b",
         r"\bportfolio\s+allocation\b",
     ]
 
@@ -38,6 +40,7 @@ class ComplianceGuard:
 
     # 3. Counterfactual & Historical Hypothetical Inquiries
     HYPOTHETICAL_PATTERNS = [
+        r"\bif\s+.*?\b(?:rbi|market|fed|interest\s+rate|nifty|gold)\b.*?\b(?:surge|fall|buy|invest|stocks?)\b",
         r"\bif\s+i\s+had\s+invested\b",
         r"\bif\s+i\s+invest(?:ed)?\s+(?:₹|rs\.?|inr)?\s*[\d,]+\s+in\b",
         r"\bwhat\s+return\s+would\s+i\s+have\s+received\b",
@@ -46,11 +49,13 @@ class ComplianceGuard:
     # 4. Adversarial Roleplay & Jailbreak Patterns
     JAILBREAK_PATTERNS = [
         r"ignore\s+(?:all\s+)?previous\s+instructions",
-        r"\byou\s+are\s+now\s+(?:wealthguru|advisor|trader|guru|expert)",
-        r"\bpretend\s+(?:you\s+are|to\s+be)\b",
-        r"\bact\s+as\s+(?:a\s+)?(?:financial\s+advisor|stock\s+broker)\b",
+        r"\byou\s+are\s+(?:now\s+)?(?:dan|wealthguru|advisor|trader|guru|expert)",
+        r"\bpretend\s+(?:you\s+are|to\s+be|we\s+are)\b",
+        r"\bact\s+as\s+(?:a\s+)?(?:financial\s+advisor|stock\s+broker|expert)\b",
         r"\bjailbreak\b",
-        r"\bdisregard\s+(?:system\s+)?rules\b",
+        r"\b(?:disregard|bypass|ignore)\s+.*?\b(?:rules?|compliance|sebi|restrictions?)\b",
+        r"\b(?:alternate\s+universe|hypothetical\s+world|fictional\s+scenario)\b",
+        r"\bpermission\s+to\s+bypass\b",
     ]
 
     # Prohibited words in outbound agent responses

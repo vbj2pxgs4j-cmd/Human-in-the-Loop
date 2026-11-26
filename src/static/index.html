@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Assistant • Human-in-the-Loop Gateway</title>
+  <meta name="description" content="Role-specific Human-in-the-Loop AI Assistant gateway for Support Specialists, Product Managers, and Compliance Auditors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Top App Navigation & Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">IA</div>
+        <div class="brand-text">
+          <h1>Investment Assistant</h1>
+          <span>Human-in-the-Loop Gateway &bull; v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="support" id="nav-tab-support">
+          <span>🎧 Support Queue</span>
+          <span class="tab-count" id="support-tab-count">0</span>
+        </button>
+        <button class="tab-btn" data-tab="product" id="nav-tab-product">
+          <span>📊 Product Intelligence</span>
+        </button>
+        <button class="tab-btn" data-tab="audit" id="nav-tab-audit">
+          <span>🛡️ Audit &amp; State Diff</span>
+        </button>
+      </nav>
+
+      <div class="header-badges">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span>State Isolation Active</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="main-viewport">
+
+    <!-- =====================================================================
+         1. Support Queue View
+         ===================================================================== -->
+    <section class="view-section active" id="support-view">
+      <div class="support-grid">
+        
+        <!-- Left: Ticket Queue Sidebar -->
+        <aside class="queue-sidebar">
+          <div class="sidebar-header">
+            <h2>Support Inquiries</h2>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Real-time Queue</span>
+          </div>
+
+          <!-- Quick Test Inquiry Input -->
+          <div class="new-query-box">
+            <label for="inquiry-text-input" style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+              Test Customer Inquiry
+            </label>
+            <textarea id="inquiry-text-input" placeholder="Type a fee or trading inquiry (e.g. Why was Rs. 15.93 debited?)..."></textarea>
+            <button class="btn btn-primary" id="btn-submit-inquiry" style="width: 100%; justify-content: center;">
+              Submit Inquiry
+            </button>
+          </div>
+
+          <!-- Status Filters -->
+          <div class="filter-pills">
+            <button class="filter-pill active" data-filter="ALL">All</button>
+            <button class="filter-pill" data-filter="PENDING_APPROVAL">Pending</button>
+            <button class="filter-pill" data-filter="APPROVED">Approved</button>
+            <button class="filter-pill" data-filter="EDITED">Edited</button>
+            <button class="filter-pill" data-filter="REJECTED">Rejected</button>
+            <button class="filter-pill" data-filter="NOT_COVERED">Not Covered</button>
+          </div>
+
+          <!-- Ticket List -->
+          <div class="ticket-list" id="ticket-list-container">
+            <!-- Dynamic Ticket Rows -->
+          </div>
+        </aside>
+
+        <!-- Right: Ticket Detail & Human Edit Studio -->
+        <div class="ticket-detail-panel" id="ticket-detail-container">
+          
+          <div class="detail-header">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.3rem;">
+                <h2 style="font-size: 1.25rem; font-weight: 700;" id="detail-ticket-id">Select a Ticket</h2>
+                <span class="badge" id="detail-ticket-status">STATUS</span>
+              </div>
+              <div class="hash-pill" id="detail-state-hash">Pre-State SHA: &mdash;</div>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Role: Support Specialist</div>
+          </div>
+
+          <!-- Original Customer Inquiry -->
+          <div class="query-card">
+            <div class="query-card-title">Customer Inquiry (Sanitized)</div>
+            <div class="query-text" id="detail-raw-query">&mdash;</div>
+          </div>
+
+          <!-- Multi-Agent Deliberation Cards -->
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.6rem;">
+              Multi-Agent Deliberation &amp; Quality Gates
+            </div>
+            <div class="deliberation-grid">
+              <div class="delib-card">
+                <div class="delib-header">
+                  <span>Retrieval Agent</span>
+                  <span>🔍</span>
+                </div>
+                <div class="delib-body" id="delib-retrieval">Loading...</div>
+              </div>
+              <div class="delib-card">
+                <div class="delib-header">
+                  <span>Compliance Guard</span>
+                  <span>🛡️</span>
+                </div>
+                <div class="delib-body" id="delib-compliance">Loading...</div>
+              </div>
+              <div class="delib-card">
+                <div class="delib-header">
+                  <span>Routing &amp; Tone</span>
+                  <span>🧭</span>
+                </div>
+                <div class="delib-body" id="delib-routing">Loading...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proposed Draft & Live Human Edit Box -->
+          <div class="draft-editor-box">
+            <div class="draft-editor-header">
+              <span style="font-size: 0.85rem; font-weight: 700; color: #f8fafc;">Proposed Response Draft</span>
+              <div class="validator-meters">
+                <div class="meter-pill valid" id="meter-sentences">0/3 Sentences</div>
+                <div class="meter-pill valid" id="meter-links">Official Source Link</div>
+              </div>
+            </div>
+
+            <textarea class="draft-textarea" id="draft-textarea" placeholder="Proposed response draft..."></textarea>
+            
+            <div style="font-size: 0.75rem; color: var(--text-muted);">
+              <strong>Deterministic Constraints:</strong> Strictly &le; 3 sentences, &ge; 1 official source link, and zero sensitive leaks. Human edits are verified before dispatch.
+            </div>
+
+            <div class="action-bar">
+              <button class="btn btn-danger" id="btn-reject-ticket">✕ Reject Draft</button>
+              <button class="btn btn-warning" id="btn-save-edit">✎ Save Human Edit</button>
+              <button class="btn btn-success" id="btn-approve-ticket">✓ Approve &amp; Dispatch</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================================
+         2. Product Intelligence View
+         ===================================================================== -->
+    <section class="view-section" id="product-view">
+      <div class="product-layout">
+        
+        <!-- Header & Action Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.5rem; font-weight: 700;">Unattended Product Intelligence</h2>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Batch review analysis, Weekly Pulse generation, and Canonical Explainer governance.</p>
+          </div>
+          <button class="btn btn-primary" id="btn-run-weekly-loop">⚡ Trigger Weekly Run</button>
+        </div>
+
+        <!-- Weekly Pulse Card -->
+        <div class="pulse-hero-card">
+          <div class="pulse-header">
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.05em;">Executive Synthesis</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700;" id="pulse-meta-week">Weekly Pulse</h3>
+            </div>
+            <div class="word-count-widget">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600;">
+                <span style="color: var(--text-muted);">Word Cap:</span>
+                <span style="color: var(--accent-emerald);" id="pulse-word-count-text">0 / 250 Words</span>
+              </div>
+              <div class="word-count-bar-bg">
+                <div class="word-count-bar-fill" id="pulse-word-count-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pulse-text-container" id="pulse-body-text">
+            Loading Weekly Pulse...
+          </div>
+
+          <!-- Interactive Quotes with Review Lineage -->
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 0.65rem;">
+              Supporting User Quotes (Verifiable Lineage)
+            </h4>
+            <div class="quotes-container" id="pulse-quotes-container">
+              <!-- Quotes injected dynamically -->
+            </div>
+          </div>
+
+          <!-- 3 Concrete Action Ideas -->
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 0.65rem;">
+              High-Impact Product Action Ideas
+            </h4>
+            <div class="actions-list" id="pulse-actions-container">
+              <!-- Action ideas injected dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Canonical Explainers Section -->
+        <div>
+          <div style="margin-bottom: 1rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Canonical Fee Explainers (Bi-Directional Bridge)</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Product-approved explainers reused across the platform when similarity &gt; 0.88.</p>
+          </div>
+          <div class="explainer-cards-grid" id="explainers-grid-container">
+            <!-- Explainer cards injected dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================================
+         3. Audit & State Diff View
+         ===================================================================== -->
+    <section class="view-section" id="audit-view">
+      <div class="audit-layout">
+        
+        <!-- Left: Mutation Feed -->
+        <div class="audit-feed-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 1.1rem; font-weight: 700;">Mutation Audit Log</h3>
+            <select id="audit-filter-type" style="background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary); border-radius: var(--radius-sm); padding: 0.3rem 0.5rem; font-size: 0.75rem;">
+              <option value="">All Entities</option>
+              <option value="ticket">Tickets</option>
+              <option value="canonicalexplainer">Explainers</option>
+              <option value="pulse">Pulses</option>
+            </select>
+          </div>
+          <div class="audit-table-container" id="audit-log-list">
+            <!-- Audit rows injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Right: Cryptographic Diff Viewer -->
+        <div class="audit-diff-viewer">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem;">
+                <h3 style="font-size: 1.2rem; font-weight: 700;" id="diff-audit-id">Audit Inspection</h3>
+                <span class="badge badge-approved">ISOLATED MUTATION</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary);" id="diff-entity">&mdash;</div>
+            </div>
+            <div style="text-align: right; font-size: 0.78rem; color: var(--text-muted);" id="diff-operator">&mdash;</div>
+          </div>
+
+          <!-- Hashes -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Pre-State SHA-256</span>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-amber); word-break: break-all; margin-top: 0.25rem;" id="diff-pre-hash">&mdash;</div>
+            </div>
+            <div style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Post-State SHA-256</span>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald); word-break: break-all; margin-top: 0.25rem;" id="diff-post-hash">&mdash;</div>
+            </div>
+          </div>
+
+          <!-- RFC 6902 Patches -->
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 0.75rem;">
+              RFC 6902 JSON Patch Operations
+            </h4>
+            <div class="patch-list" id="diff-patch-container">
+              <!-- Patch operations injected dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

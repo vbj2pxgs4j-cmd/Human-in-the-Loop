@@ -227,6 +227,10 @@ class AuditDiffLogger:
             entries = [e for e in entries if e.entity_id == entity_id]
         return entries
 
+    def clear(self) -> None:
+        """Clear all audit records (primarily for test resets)."""
+        self._write_records([])
+
 
 # Global AuditLogger singleton
 _default_audit_logger: Optional[AuditDiffLogger] = None

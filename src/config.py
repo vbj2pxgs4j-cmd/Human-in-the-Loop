@@ -101,6 +101,24 @@ class Settings(BaseSettings):
         description="Domains permitted for factual citations",
     )
 
+    # API Security & CORS
+    SUPPORT_API_KEY: str = Field(
+        default="hitl_live_sk_7f8a9b2c3d4e5f6a1b2c3d4e5f6a7b8c",
+        description="API Key for HITL support operations and external client access",
+    )
+    CORS_ORIGINS: List[str] = Field(
+        default_factory=lambda: [
+            "https://investment-assistant-alpha.vercel.app",
+            "https://web-production-a65a2102.up.railway.app",
+            "http://localhost:3000",
+            "http://localhost:8000",
+            "http://127.0.0.1:3000",
+            "http://127.0.0.1:8000",
+            "*",
+        ],
+        description="Allowed CORS origins",
+    )
+
 
 # Global settings singleton accessor
 _settings_instance: Settings | None = None

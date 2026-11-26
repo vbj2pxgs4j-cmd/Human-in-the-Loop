@@ -31,15 +31,15 @@ class PIIScrubber:
     ]
 
     # Stage 1: Indian Financial Identifiers
-    # PAN Card: 5 letters + 4 digits + 1 letter (case-insensitive with optional separators)
+    # PAN Card: 5 letters + 4 digits + 1 letter (case-insensitive with optional separators: spaces, dots, dashes)
     PAN_PATTERN = re.compile(
-        r"\b[A-Za-z]\s*[A-Za-z]\s*[A-Za-z]\s*[A-Za-z]\s*[A-Za-z]\s*[\-\.]?\s*\d\s*\d\s*\d\s*\d\s*[\-\.]?\s*[A-Za-z]\b"
+        r"\b[A-Za-z](?:[\s\.\-_]*[A-Za-z]){4}[\s\.\-_]*(?:\d[\s\.\-_]*){4}[A-Za-z]\b"
     )
 
     # Indian Mobile Phone: 10 digits starting with 6, 7, 8, or 9
     # Supports +91, 0 prefix, 5-5 split, 3-3-4 split, dashes, and spaces
     PHONE_PATTERN = re.compile(
-        r"(?:\+91[\-\s]?|0)?[6-9](?:[\-\s]?\d){9}\b"
+        r"\b(?:\+91[\-\s]?|0)?[6-9](?:[\-\s]?\d){9}\b"
     )
     # Spaced mobile number: e.g. 9 8 7 6 5 4 3 2 1 0
     PHONE_SPACED_PATTERN = re.compile(
@@ -48,7 +48,7 @@ class PIIScrubber:
 
     # Aadhaar Number: 12 digits, starting with 2-9
     AADHAAR_PATTERN = re.compile(
-        r"\b[2-9]\d{3}[\s\-]?[0-9]{4}[\s\-]?[0-9]{4}\b"
+        r"\b[2-9]\d{3}[\s\-]?[0-9]{4}[\s\-]?[0-9]{4}\b|\b[2-9]\d{11}\b"
     )
     AADHAAR_SPACED_PATTERN = re.compile(
         r"\b[2-9](?:\s*\d){11}\b"
@@ -66,7 +66,7 @@ class PIIScrubber:
     # Stage 2: Entity-Based Masking (Names and Locations)
     # Capitalized names with linguistic prefixes (excluding action verbs)
     NAME_PATTERNS = [
-        re.compile(r"(?i:\b(?:my name is|this is|name\s*[:\-])\s+)([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,2})\b"),
+        re.compile(r"(?i:\b(?:my name is|this is|customer\s+name\s*(?:is|[:\-])?|client\s+name\s*(?:is|[:\-])?|user\s+name\s*(?:is|[:\-])?|name\s*[:\-])\s+)([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,2})\b"),
         re.compile(r"(?i:\bi am\s+)(?!(?:living|residing|from|trying|asking|writing|investing|trading|using)\b)([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,2})\b"),
         re.compile(r"(?i:\b(?:mr\.|mrs\.|ms\.|dr\.)\s+)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b"),
         re.compile(r"(?i:\b(?:account holder|client name|user)\s*[:\-]?\s+)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b"),

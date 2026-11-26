@@ -1,1 +1,223 @@
-[]
+[
+  {
+    "audit_id": "aud_1795699083474",
+    "timestamp": "2026-11-26T13:18:03.474752Z",
+    "operator_id": "operator_test",
+    "entity_type": "ticket",
+    "entity_id": "tkt_10291",
+    "action": "EDIT_DRAFT",
+    "pre_state_hash": "e486835ea54914d727b9b8c013820a3b4ef51836d8b29570cfd69f748a9b5968",
+    "post_state_hash": "dabfc55c7bff3e012abd98df9d08a5fa88bd5ef75e3af2402e36fa63784f2b08",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/operator_id",
+        "value": "operator_test"
+      },
+      {
+        "op": "replace",
+        "path": "/proposed_draft",
+        "value": "DP charges of Rs. 15.93 apply when selling equity shares. Source: https://cdslindia.com/charges"
+      },
+      {
+        "op": "replace",
+        "path": "/sentence_count",
+        "value": 2
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "EDITED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083477",
+    "timestamp": "2026-11-26T13:18:03.477263Z",
+    "operator_id": "operator_approver",
+    "entity_type": "ticket",
+    "entity_id": "tkt_10291",
+    "action": "APPROVE_TICKET",
+    "pre_state_hash": "a25ca56376de27de17718ef39aecab20764ac9875aa29d3626ec055ee9d83b38",
+    "post_state_hash": "45242af8a47c251a023298a727232836d6d5add70da25d7113f96efc90c5f022",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/operator_id",
+        "value": "operator_approver"
+      },
+      {
+        "op": "replace",
+        "path": "/resolved_at",
+        "value": "2026-11-26T13:18:03.477222Z"
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "APPROVED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083480",
+    "timestamp": "2026-11-26T13:18:03.480031Z",
+    "operator_id": "operator_rejector",
+    "entity_type": "ticket",
+    "entity_id": "tkt_10292",
+    "action": "REJECT_TICKET",
+    "pre_state_hash": "3d49dc57cfc5cdd35013a879aa2e1266c7ace7ce59bf5ef89fa97f189c5d603d",
+    "post_state_hash": "6c42e42e4c728d23e258ad397663b291e8af5cfdd61f82ce4617663ee335612f",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/operator_id",
+        "value": "operator_rejector"
+      },
+      {
+        "op": "replace",
+        "path": "/resolved_at",
+        "value": "2026-11-26T13:18:03.479892Z"
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "REJECTED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083489",
+    "timestamp": "2026-11-26T13:18:03.489773Z",
+    "operator_id": "product_lead_test",
+    "entity_type": "canonicalexplainer",
+    "entity_id": "expl_amc_charges",
+    "action": "APPROVE_EXPLAINER",
+    "pre_state_hash": "3912bb045f3f42ce32df76de50e0a7469b7fe40f7a308889e25d36c89e096808",
+    "post_state_hash": "f66692f3245a6d5f1e0a174ba2beacea0ffe27f300f51967e35e630ae4c7ea35",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/approved_at",
+        "value": "2026-11-26T13:18:03.489634Z"
+      },
+      {
+        "op": "replace",
+        "path": "/approved_by",
+        "value": "product_lead_test"
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "APPROVED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083492",
+    "timestamp": "2026-11-26T13:18:03.492419Z",
+    "operator_id": "compliance_lead",
+    "entity_type": "canonicalexplainer",
+    "entity_id": "expl_dp_charges",
+    "action": "INVALIDATE_EXPLAINER",
+    "pre_state_hash": "fc8bcd3ca72b6e66f81d1e689a0d52f342cc1a16e0760b0ab021128b8d057757",
+    "post_state_hash": "9234787ef8f854d09090f940397b585df6d302cc4792f7352a9a53659b521dca",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "ARCHIVED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083539",
+    "timestamp": "2026-11-26T13:18:03.539701Z",
+    "operator_id": "support_specialist",
+    "entity_type": "ticket",
+    "entity_id": "tkt_10291",
+    "action": "EDIT_DRAFT",
+    "pre_state_hash": "d31283b691dd7948a9d3712adc93409fb9f7e05480bbb2318f9a51b2f89ee75c",
+    "post_state_hash": "adf48128cb50bfd73c48fd0c24e6c24c96edb728363afb8cf17266207a6c9a99",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/operator_id",
+        "value": "support_specialist"
+      },
+      {
+        "op": "replace",
+        "path": "/proposed_draft",
+        "value": "Updated draft with valid link. Source: https://cdslindia.com/charges"
+      },
+      {
+        "op": "replace",
+        "path": "/sentence_count",
+        "value": 2
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "EDITED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083552",
+    "timestamp": "2026-11-26T13:18:03.552787Z",
+    "operator_id": "operator_a",
+    "entity_type": "ticket",
+    "entity_id": "tkt_10291",
+    "action": "APPROVE_TICKET",
+    "pre_state_hash": "627a942198d9c24c67a9b6675cd8be1eb71629a55397e76b5fc3afab8644be28",
+    "post_state_hash": "a5c7dbd7b04c0d2b37750193cd4ed880c8132349f7b471a12190f1e5ec7496cd",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/operator_id",
+        "value": "operator_a"
+      },
+      {
+        "op": "replace",
+        "path": "/resolved_at",
+        "value": "2026-11-26T13:18:03.552746Z"
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "APPROVED"
+      }
+    ]
+  },
+  {
+    "audit_id": "aud_1795699083556",
+    "timestamp": "2026-11-26T13:18:03.556798Z",
+    "operator_id": "operator_isolation_test",
+    "entity_type": "ticket",
+    "entity_id": "tkt_10291",
+    "action": "EDIT_DRAFT",
+    "pre_state_hash": "1c493625cc4f5a7f89323f72111812da91788025cff6c6e2bdabb0f4370ffac3",
+    "post_state_hash": "a9a98e4bed0df40d2e2b73f483bd0f3726933894837520332f0dd8cdb62415f3",
+    "diff": [
+      {
+        "op": "replace",
+        "path": "/operator_id",
+        "value": "operator_isolation_test"
+      },
+      {
+        "op": "replace",
+        "path": "/proposed_draft",
+        "value": "Updated T1 draft. Source: https://cdslindia.com/charges"
+      },
+      {
+        "op": "replace",
+        "path": "/sentence_count",
+        "value": 2
+      },
+      {
+        "op": "replace",
+        "path": "/status",
+        "value": "EDITED"
+      }
+    ]
+  }
+]
