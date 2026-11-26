@@ -1,0 +1,14 @@
+{
+  "doc_id": "doc_brokerage_schedule",
+  "title": "Official Brokerage Tariff & Transaction Fee Schedule",
+  "source_url": "https://platform.in/charges",
+  "category": "BROKERAGE",
+  "last_updated": "2026-10-01T00:00:00Z",
+  "content": "Official Brokerage Tariff and Fee Schedule for Trading and Investments.\n\n1. Equity Delivery Trading:\nEquity Delivery investments are 100% brokerage-free. There is flat Rs. 0 (zero brokerage) charged on all equity delivery buy and sell trades. Investors holding equities for more than one trading day incur zero platform commission.\n\n2. Equity Intraday Trading:\nFor equity intraday trades (buy and sell executed within the same trading session), brokerage is charged at flat Rs. 20 or 0.05% of trade value (whichever is lower) per executed order. For example, on an executed order of Rs. 10,000, the fee is Rs. 5. For orders exceeding Rs. 40,000, the maximum brokerage charged is capped at Rs. 20 per executed order.\n\n3. Futures & Options (F&O):\n- Equity Futures: Flat Rs. 20 or 0.05% (whichever is lower) per executed order.\n- Equity Options: Flat Rs. 20 per executed order on turnover, regardless of the number of lots or contract size.\n- Currency Derivatives: Flat Rs. 20 or 0.05% per executed order for currency futures, and flat Rs. 20 per executed order for currency options.\n- Commodity Derivatives: Flat Rs. 20 per executed order for commodity futures and options.\n\n4. Call & Trade and Auto-Square Off Charges:\nOrders placed via support desk through Call & Trade service attract an additional charge of Rs. 50 + 18% GST per executed order. Positions squared off automatically by the platform risk management system at market close incur an auto-square off fee of Rs. 50 + 18% GST per order.",
+  "metadata": {
+    "version": "2026.1",
+    "applicable_jurisdiction": "India",
+    "regulatory_authority": "SEBI",
+    "published_by": "Compliance & Operations Desk"
+  }
+}

@@ -1,0 +1,19 @@
+Problem statement
+Support and product teams at an Indian investment platform are each looking at half of the same problem. Support answers the same fee and charge questions dozens of times a month. Each reply is written fresh and sometimes comes out wrong. Product reads a review dashboard that says "pricing confusion is up" but not which fee is confusing, or what support is already telling users about it.
+The information that would connect the two teams is in no single place: what the official documents actually say, what users are actually confused about, and how often. As a result, the same fee is explained inconsistently, and product decisions are made without knowing which questions keep coming back.
+What we are building
+One deployed, human-approved web application that runs both halves on a schedule and links them.
+Weekly loop: Ingest reviews, cluster them into at most five themes, and identify the top three along with the recurring fee or charge confusion. Produce a pulse of 250 words or fewer with supporting quotes and three action ideas. Also produce a fee explainer of six bullets or fewer, with two official source links and a last-checked date.
+Response loop: Take a queue of incoming user questions. Each one runs through three agents in parallel, then an orchestrator, then a reviewer. The result is a cited reply draft of three sentences or fewer, plus an internal routing note.
+Connection: An approved fee explainer becomes the canonical answer the response loop reuses instead of drafting fresh. Any question seen five or more times in a week appears in the weekly pulse.
+Constraints, enforced in code
+Facts only: no recommendations, no buy or sell language, and no return or performance figures.
+Every factual claim carries one source link from the Milestone 1 corpus, and only public sources are used.
+When the corpus doesn't cover a question, the system says so and names what it searched.
+No PII is stored anywhere, including the dataset, interface, logs and agent state.
+Nothing is written or sent without a human approving that specific action.
+Success criteria
+Every question is answered or explained. Every queued question produces either a draft of three sentences or fewer, or an explicit "not covered" response that names what it searched.
+The weekly loop runs unattended and inside its caps. Once triggered, the loop completes end-to-end without manual intervention. The pulse stays within 250 words and the explainer within six bullets. Every theme traces to review ids and a stated window.
+Edits and approvals stay contained. Editing, approving or rejecting one item changes only that item. A diff of system state before and after each action confirms it.
+Claims are grounded and nothing sensitive leaks. In a sample of fifteen claims across both loops, each traces to an official source link or a review id. Advice requests, return-figure requests, and messages containing a PAN, account number or phone number are refused or redacted every time, rephrased and repeated, in both loops. Nothing sensitive reaches logs or agent state.

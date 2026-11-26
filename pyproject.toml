@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hitl-support-intelligence"
+version = "0.1.0"
+description = "Human-in-the-Loop Support & Product Intelligence System"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Engineering Team", email = "engineering@platform.in" }
+]
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.2.0",
+    "sentence-transformers>=2.5.0",
+    "rank-bm25>=0.2.2",
+    "scikit-learn>=1.4.0",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.1",
+    "numpy>=1.26.0",
+    "nltk>=3.8.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

@@ -1,0 +1,14 @@
+{
+  "doc_id": "doc_statutory_charges",
+  "title": "Statutory & Regulatory Charges: STT, Stamp Duty, GST and SEBI Fees",
+  "source_url": "https://sebi.gov.in/charges",
+  "category": "STATUTORY_CHARGES",
+  "last_updated": "2026-10-01T00:00:00Z",
+  "content": "Regulatory and Statutory Levies on Indian Capital Market Transactions.\n\n1. Securities Transaction Tax (STT):\nSTT is a mandatory central tax levied on the value of securities traded on recognized stock exchanges (NSE/BSE):\n- Equity Delivery: 0.1% on both Buy and Sell sides of the trade value.\n- Equity Intraday: 0.025% on the Sell side only (zero on Buy side).\n- Equity Futures: 0.02% on the Sell side only.\n- Equity Options: 0.1% on the Sell side (calculated on premium turnover), and 0.125% on intrinsic value for exercised options contracts.\n\n2. Goods and Services Tax (GST):\nA standardized GST rate of 18% is levied by the Government of India. GST is applicable on the sum of: (Brokerage + SEBI Turnover Charges + Exchange Transaction Charges + DP Charges). GST is never levied directly on the underlying stock value or STT.\n\n3. Stamp Duty (Indian Stamp Act):\nState stamp duty is collected centrally on purchase transactions only:\n- Equity Delivery: 0.015% (Rs. 1,500 per crore) on Buy turnover.\n- Equity Intraday: 0.003% (Rs. 300 per crore) on Buy turnover.\n- Futures: 0.002% (Rs. 200 per crore) on Buy turnover.\n- Options: 0.003% (Rs. 300 per crore) on Buy turnover.\n\n4. SEBI Turnover Charges & Exchange Transaction Fees:\n- SEBI Charges: Flat Rs. 10 per crore (0.0001%) across all segments for regulatory oversight.\n- Exchange Transaction Fees: NSE charges 0.00297% on turnover; BSE charges 0.00375% on equity delivery turnover.",
+  "metadata": {
+    "version": "2026.1",
+    "applicable_jurisdiction": "India",
+    "regulatory_authority": "SEBI & Ministry of Finance",
+    "circular_reference": "SEBI/HO/MRD/DC/CIR/P/2026/04"
+  }
+}

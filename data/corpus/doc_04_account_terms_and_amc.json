@@ -1,0 +1,14 @@
+{
+  "doc_id": "doc_account_maintenance_terms",
+  "title": "Account Maintenance Charges (AMC), Demat Terms & Payment Gateway Fees",
+  "source_url": "https://platform.in/terms",
+  "category": "ACCOUNT_MAINTENANCE",
+  "last_updated": "2026-10-01T00:00:00Z",
+  "content": "Official Terms of Demat Account Opening, Maintenance (AMC), and Payment Gateways.\n\n1. Account Opening Fees:\nOpening a trading and demat account on our platform is 100% free (Rs. 0 account opening charges). There are zero documentation, verification, or initial subscription fees for individual retail investors.\n\n2. Annual Maintenance Charges (AMC):\n- Basic Services Demat Account (BSDA): Investors whose total holding value across all demat accounts is below Rs. 4,00,000 qualify for BSDA guidelines with Rs. 0 annual maintenance charge.\n- Standard Individual Demat Account: For accounts exceeding BSDA thresholds, Annual Maintenance Charge (AMC) is flat Rs. 300 per year + 18% GST (total Rs. 354 per year).\n- Debit Cadence: AMC is debited on a quarterly basis at Rs. 75 + 18% GST (Rs. 88.50 per quarter) directly from the trading account ledger balance at the end of each calendar quarter.\n- Ledger Inactivity: If an account has zero cash balance, the quarterly AMC is billed to the account ledger and reflected in the quarterly account statement.\n\n3. Fund Transfers & Payment Gateway Fees:\n- Unified Payments Interface (UPI): Rs. 0 (Free instant deposit across all supported banks).\n- Net Banking: Rs. 9 + 18% GST per transfer across participating retail banks.\n- Instant Withdrawal (IMPS): Rs. 0 for standard NEFT/RTGS batch withdrawals; Rs. 5 + GST for instant IMPS credit requests up to Rs. 2,00,000.\n\n4. Physical Statements & Contract Notes:\nDigital contract notes and quarterly holding statements delivered via registered email are completely free. Physical copy requests attract a processing and courier fee of Rs. 20 + GST per document.",
+  "metadata": {
+    "version": "2026.1",
+    "applicable_jurisdiction": "India",
+    "governing_policy": "Platform Terms of Service & Tariff Guidelines",
+    "section": "Schedule A - Maintenance & Transfers"
+  }
+}

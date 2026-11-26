@@ -1,0 +1,14 @@
+{
+  "doc_id": "doc_dp_charges",
+  "title": "Depository Participant (DP) Charges & Debit Transaction Fees",
+  "source_url": "https://cdslindia.com/charges",
+  "category": "DP_CHARGES",
+  "last_updated": "2026-10-01T00:00:00Z",
+  "content": "Official Depository Participant (DP) Charges for CDSL and NSDL Demat Accounts.\n\n1. What is a DP Charge:\nDepository Participant (DP) charge is an administrative fee collected by depositories (CDSL/NSDL) and the depository participant broker whenever shares are debited from an investor's demat account.\n\n2. Pricing & Applicability:\n- Rate: Flat Rs. 13.50 + 18% GST (total Rs. 15.93) per scrip (company) per day.\n- Applicable on Selling: DP charges are levied strictly on delivery sell transactions. Buying shares incurs zero DP charges.\n- Flat Per Scrip: The fee is charged per company per day, irrespective of the volume or value of shares sold. For example, whether you sell 1 share or 1,000 shares of Reliance Industries in a single day, the total DP charge debited is flat Rs. 13.50 + GST.\n- Selling Multiple Scrips: If an investor sells shares of three different companies (e.g., TCS, Infosys, and HDFC Bank) on the same day, three separate DP charges apply (3 x Rs. 15.93 = Rs. 47.79).\n\n3. Intra-day & Mutual Funds Exemption:\n- Intraday equity trades do not involve shares moving in or out of the demat account, so intraday trades attract zero DP charges.\n- Mutual funds redemptions and ETF unit creations follow separate scheme settlement schedules.\n\n4. Pledge & Unpledge Transactions:\nPledge creation and pledge closure requests incur a fee of Rs. 20 + 18% GST per transaction per ISIN.",
+  "metadata": {
+    "version": "2026.1",
+    "applicable_jurisdiction": "India",
+    "depository": "CDSL / NSDL",
+    "circular_reference": "CDSL/OPS/DP/POLCY/2026/112"
+  }
+}
