@@ -1,13 +1,13 @@
 [
   {
-    "audit_id": "aud_1795699083474",
-    "timestamp": "2026-11-26T13:18:03.474752Z",
+    "audit_id": "aud_1795711451336",
+    "timestamp": "2026-11-26T16:44:11.336020Z",
     "operator_id": "operator_test",
     "entity_type": "ticket",
     "entity_id": "tkt_10291",
     "action": "EDIT_DRAFT",
-    "pre_state_hash": "e486835ea54914d727b9b8c013820a3b4ef51836d8b29570cfd69f748a9b5968",
-    "post_state_hash": "dabfc55c7bff3e012abd98df9d08a5fa88bd5ef75e3af2402e36fa63784f2b08",
+    "pre_state_hash": "6430efbdf99b7a5ee225a0d895e80eef63f62b19ee859bad9d7f11a13c5a9cbb",
+    "post_state_hash": "22bf79664037dc30f68efc9e47f44e4f8e0931c3a6a51cdba0b846eb0f2217b4",
     "diff": [
       {
         "op": "replace",
@@ -32,14 +32,14 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083477",
-    "timestamp": "2026-11-26T13:18:03.477263Z",
+    "audit_id": "aud_1795711451338",
+    "timestamp": "2026-11-26T16:44:11.338693Z",
     "operator_id": "operator_approver",
     "entity_type": "ticket",
     "entity_id": "tkt_10291",
     "action": "APPROVE_TICKET",
-    "pre_state_hash": "a25ca56376de27de17718ef39aecab20764ac9875aa29d3626ec055ee9d83b38",
-    "post_state_hash": "45242af8a47c251a023298a727232836d6d5add70da25d7113f96efc90c5f022",
+    "pre_state_hash": "035488fada04f7e167ccf11adf9f9f03b6db75ae7efa48e96d96ae9059fdd816",
+    "post_state_hash": "fe410fccb2cb2b8fd011b9bfc1e88a64f8818e11891eb5945884919894674dc8",
     "diff": [
       {
         "op": "replace",
@@ -49,7 +49,7 @@
       {
         "op": "replace",
         "path": "/resolved_at",
-        "value": "2026-11-26T13:18:03.477222Z"
+        "value": "2026-11-26T16:44:11.338652Z"
       },
       {
         "op": "replace",
@@ -59,14 +59,14 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083480",
-    "timestamp": "2026-11-26T13:18:03.480031Z",
+    "audit_id": "aud_1795711451341",
+    "timestamp": "2026-11-26T16:44:11.341839Z",
     "operator_id": "operator_rejector",
     "entity_type": "ticket",
     "entity_id": "tkt_10292",
     "action": "REJECT_TICKET",
-    "pre_state_hash": "3d49dc57cfc5cdd35013a879aa2e1266c7ace7ce59bf5ef89fa97f189c5d603d",
-    "post_state_hash": "6c42e42e4c728d23e258ad397663b291e8af5cfdd61f82ce4617663ee335612f",
+    "pre_state_hash": "d30c72d30bc9a43b72fd48bff7b4dc316a6b36059a125443944b16d060b8a143",
+    "post_state_hash": "7a8bca3fb4ae84c8a93d80faeaac87057e45966869d6dff1ad4205c22b92a922",
     "diff": [
       {
         "op": "replace",
@@ -76,7 +76,7 @@
       {
         "op": "replace",
         "path": "/resolved_at",
-        "value": "2026-11-26T13:18:03.479892Z"
+        "value": "2026-11-26T16:44:11.341428Z"
       },
       {
         "op": "replace",
@@ -86,19 +86,19 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083489",
-    "timestamp": "2026-11-26T13:18:03.489773Z",
+    "audit_id": "aud_1795711451351",
+    "timestamp": "2026-11-26T16:44:11.351854Z",
     "operator_id": "product_lead_test",
     "entity_type": "canonicalexplainer",
     "entity_id": "expl_amc_charges",
     "action": "APPROVE_EXPLAINER",
-    "pre_state_hash": "3912bb045f3f42ce32df76de50e0a7469b7fe40f7a308889e25d36c89e096808",
-    "post_state_hash": "f66692f3245a6d5f1e0a174ba2beacea0ffe27f300f51967e35e630ae4c7ea35",
+    "pre_state_hash": "7677cde9c24af1fc24fcf82b44a5b32b21eb010effa57528924eec483a28b2b6",
+    "post_state_hash": "61ed781b747b67d685eb130fca45c6eca5be6bd874d101f6964212463f6c1bd0",
     "diff": [
       {
         "op": "replace",
         "path": "/approved_at",
-        "value": "2026-11-26T13:18:03.489634Z"
+        "value": "2026-11-26T16:44:11.351717Z"
       },
       {
         "op": "replace",
@@ -113,14 +113,14 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083492",
-    "timestamp": "2026-11-26T13:18:03.492419Z",
+    "audit_id": "aud_1795711451354",
+    "timestamp": "2026-11-26T16:44:11.354398Z",
     "operator_id": "compliance_lead",
     "entity_type": "canonicalexplainer",
     "entity_id": "expl_dp_charges",
     "action": "INVALIDATE_EXPLAINER",
-    "pre_state_hash": "fc8bcd3ca72b6e66f81d1e689a0d52f342cc1a16e0760b0ab021128b8d057757",
-    "post_state_hash": "9234787ef8f854d09090f940397b585df6d302cc4792f7352a9a53659b521dca",
+    "pre_state_hash": "fcf6e04111169026ebee63a564fcde87cb2af12d4fede6743e528d1e6b59ddce",
+    "post_state_hash": "2b9d2345beda93b9cee019db1427f546825b4af3ed1cecdfe0b3a79f0fdec2bd",
     "diff": [
       {
         "op": "replace",
@@ -130,14 +130,25 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083539",
-    "timestamp": "2026-11-26T13:18:03.539701Z",
+    "audit_id": "aud_1795711451397",
+    "timestamp": "2026-11-26T16:44:11.397522Z",
+    "operator_id": "scheduler_pulse_run_api",
+    "entity_type": "weeklypulse",
+    "entity_id": "pulse_2026_w48",
+    "action": "SCHEDULED_WEEKLY_RUN",
+    "pre_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "post_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "diff": []
+  },
+  {
+    "audit_id": "aud_1795711451406",
+    "timestamp": "2026-11-26T16:44:11.406368Z",
     "operator_id": "support_specialist",
     "entity_type": "ticket",
     "entity_id": "tkt_10291",
     "action": "EDIT_DRAFT",
-    "pre_state_hash": "d31283b691dd7948a9d3712adc93409fb9f7e05480bbb2318f9a51b2f89ee75c",
-    "post_state_hash": "adf48128cb50bfd73c48fd0c24e6c24c96edb728363afb8cf17266207a6c9a99",
+    "pre_state_hash": "300852bc0bcc66081f02186d430e79c913d6228f6feab0cc8d24b8b181c49e51",
+    "post_state_hash": "8503eff040e71498408c6d5d5c1df0b5365b708c29dde1834adccdebc752530b",
     "diff": [
       {
         "op": "replace",
@@ -162,14 +173,14 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083552",
-    "timestamp": "2026-11-26T13:18:03.552787Z",
+    "audit_id": "aud_1795711451419",
+    "timestamp": "2026-11-26T16:44:11.419288Z",
     "operator_id": "operator_a",
     "entity_type": "ticket",
     "entity_id": "tkt_10291",
     "action": "APPROVE_TICKET",
-    "pre_state_hash": "627a942198d9c24c67a9b6675cd8be1eb71629a55397e76b5fc3afab8644be28",
-    "post_state_hash": "a5c7dbd7b04c0d2b37750193cd4ed880c8132349f7b471a12190f1e5ec7496cd",
+    "pre_state_hash": "8c191903030bb6ba849a84ba0df80f9be633fe95a69f872a4a22f85ec168f7df",
+    "post_state_hash": "7e3298701c88cba8cab2c7bb1079cad7226f2e003bc27fa087902ea719d47e9b",
     "diff": [
       {
         "op": "replace",
@@ -179,7 +190,7 @@
       {
         "op": "replace",
         "path": "/resolved_at",
-        "value": "2026-11-26T13:18:03.552746Z"
+        "value": "2026-11-26T16:44:11.419246Z"
       },
       {
         "op": "replace",
@@ -189,14 +200,14 @@
     ]
   },
   {
-    "audit_id": "aud_1795699083556",
-    "timestamp": "2026-11-26T13:18:03.556798Z",
+    "audit_id": "aud_1795711451423",
+    "timestamp": "2026-11-26T16:44:11.423457Z",
     "operator_id": "operator_isolation_test",
     "entity_type": "ticket",
     "entity_id": "tkt_10291",
     "action": "EDIT_DRAFT",
-    "pre_state_hash": "1c493625cc4f5a7f89323f72111812da91788025cff6c6e2bdabb0f4370ffac3",
-    "post_state_hash": "a9a98e4bed0df40d2e2b73f483bd0f3726933894837520332f0dd8cdb62415f3",
+    "pre_state_hash": "0ff0c4438d26be6533e2bf9051436ca7a4a817bc702099e6fa0c1ec0a55a49ba",
+    "post_state_hash": "57c4d81c5118083a6c8147665a3a897701e4b434eb6b0d2483928901c4caa343",
     "diff": [
       {
         "op": "replace",
@@ -219,5 +230,60 @@
         "value": "EDITED"
       }
     ]
+  },
+  {
+    "audit_id": "aud_1795711451533",
+    "timestamp": "2026-11-26T16:44:11.533302Z",
+    "operator_id": "scheduler_cron_api",
+    "entity_type": "weeklypulse",
+    "entity_id": "pulse_2026_w48",
+    "action": "SCHEDULED_WEEKLY_RUN",
+    "pre_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "post_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "diff": []
+  },
+  {
+    "audit_id": "aud_1795711451570",
+    "timestamp": "2026-11-26T16:44:11.570848Z",
+    "operator_id": "scheduler_cron_api",
+    "entity_type": "weeklypulse",
+    "entity_id": "pulse_2026_w48",
+    "action": "SCHEDULED_WEEKLY_RUN",
+    "pre_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "post_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "diff": []
+  },
+  {
+    "audit_id": "aud_1795711451611",
+    "timestamp": "2026-11-26T16:44:11.611048Z",
+    "operator_id": "scheduler_cron_api",
+    "entity_type": "weeklypulse",
+    "entity_id": "pulse_2026_w48",
+    "action": "SCHEDULED_WEEKLY_RUN",
+    "pre_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "post_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "diff": []
+  },
+  {
+    "audit_id": "aud_1795711451648",
+    "timestamp": "2026-11-26T16:44:11.648755Z",
+    "operator_id": "scheduler_cron_api",
+    "entity_type": "weeklypulse",
+    "entity_id": "pulse_2026_w48",
+    "action": "SCHEDULED_WEEKLY_RUN",
+    "pre_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "post_state_hash": "5501c4d435e37beee402a91fd2663365fdadf02b8534e02a46129f09b4f225cd",
+    "diff": []
+  },
+  {
+    "audit_id": "aud_1795711451691",
+    "timestamp": "2026-11-26T16:44:11.691378Z",
+    "operator_id": "scheduler_test_direct",
+    "entity_type": "weeklypulse",
+    "entity_id": "pulse_2026_w49",
+    "action": "SCHEDULED_WEEKLY_RUN",
+    "pre_state_hash": "66d80307cf661657589bad6155a1e8aecc6be8f0a603d5a7eccf36e7745e4c27",
+    "post_state_hash": "66d80307cf661657589bad6155a1e8aecc6be8f0a603d5a7eccf36e7745e4c27",
+    "diff": []
   }
 ]

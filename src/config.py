@@ -119,6 +119,20 @@ class Settings(BaseSettings):
         description="Allowed CORS origins",
     )
 
+    # Weekly Scheduler Settings
+    ENABLE_IN_APP_SCHEDULER: bool = Field(
+        default=True,
+        description="Enable background in-app scheduler for Weekly Loop execution",
+    )
+    WEEKLY_LOOP_INTERVAL_SECONDS: int = Field(
+        default=604800,
+        description="Interval in seconds between automated Weekly Loop cycles (7 days = 604800s)",
+    )
+    REQUIRE_CRON_API_KEY: bool = Field(
+        default=True,
+        description="Whether POST /api/product/run-weekly strictly requires a valid API key",
+    )
+
 
 # Global settings singleton accessor
 _settings_instance: Settings | None = None

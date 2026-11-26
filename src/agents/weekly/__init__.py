@@ -22,6 +22,10 @@ from src.agents.weekly.runner import (
     get_weekly_runner,
     run_weekly_pipeline,
 )
+from src.agents.weekly.scheduler import (
+    WeeklyScheduler,
+    get_weekly_scheduler,
+)
 
 __all__ = [
     "ReviewIngestor",
@@ -36,4 +40,6 @@ __all__ = [
     "WeeklyRunner",
     "get_weekly_runner",
     "run_weekly_pipeline",
+    "WeeklyScheduler",
+    "get_weekly_scheduler",
 ]

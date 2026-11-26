@@ -3,7 +3,7 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)](https://fastapi.tiangolo.com)
 [![Pydantic v2](https://img.shields.io/badge/pydantic-v2.10+-e92063.svg)](https://docs.pydantic.dev/)
-[![Tests](https://img.shields.io/badge/tests-132%20passed-success.svg)](file:///Users/jeevanshu/projects%20form%20nextleaf/Human-in-the-Loop/tests)
+[![Tests](https://img.shields.io/badge/tests-142%20passed-success.svg)](file:///Users/jeevanshu/projects%20form%20nextleaf/Human-in-the-Loop/tests)
 [![Audit](https://img.shields.io/badge/15--claim%20audit-100%25%20verified-brightgreen.svg)](file:///Users/jeevanshu/projects%20form%20nextleaf/Human-in-the-Loop/scripts/verify_claims_audit.py)
 [![Security](https://img.shields.io/badge/adversarial%20pen--test-21%2F21%20pass-brightgreen.svg)](file:///Users/jeevanshu/projects%20form%20nextleaf/Human-in-the-Loop/scripts/adversarial_security_test.py)
 
@@ -271,7 +271,9 @@ Inspect logs with `docker-compose logs -f` and verify health via `curl http://lo
 - `GET /api/product/explainers`: List canonical fee explainers (draft and approved).
 - `POST /api/product/explainers/{explainer_id}/approve`: 1-click PM approval committing explainer into live Canonical Store.
 - `POST /api/product/explainers/{explainer_id}/invalidate`: Archive explainer upon fee schedule updates.
-- `POST /api/product/pulse/run`: Trigger unattended Weekly Loop pipeline run.
+- `POST /api/product/run-weekly`: Trigger unattended Weekly Loop on schedule with API key (`X-API-Key` header or `Authorization: Bearer`).
+- `POST /api/product/pulse/run`: Trigger unattended Weekly Loop pipeline run (in-app dashboard trigger).
+- `GET /api/product/schedule/status`: Inspect runtime status, interval, total runs, and last/next execution timestamps of the Weekly Scheduler.
 
 ### Audit & State Diff Endpoints
 - `GET /api/audit/logs`: Query immutable append-only audit logs (filter by `entity_type`, `entity_id`, or `operator_id`).
@@ -280,13 +282,47 @@ Inspect logs with `docker-compose logs -f` and verify health via `curl http://lo
 
 ---
 
+## Live Weekly Schedule & Automation
+
+The Weekly Loop runs 100% unattended on a recurring schedule without requiring manual prompts:
+
+1. **In-App Background Scheduler (`WeeklyScheduler`):**
+   - Automatically initializes during FastAPI application lifespan on startup.
+   - Runs a background worker loop every 7 days (`WEEKLY_LOOP_INTERVAL_SECONDS=604800`), invoking the end-to-end pipeline.
+   - Diagnostic status is monitorable at `GET /api/product/schedule/status`.
+
+2. **GitHub Actions Scheduled Cron Workflow (`.github/workflows/weekly_loop_cron.yml`):**
+   - Configured with `schedule: - cron: '0 0 * * 1'` (every Monday at 00:00 UTC / 05:30 AM IST).
+   - Also supports manual execution via `workflow_dispatch`.
+   - Hits `POST /api/product/run-weekly` with header `X-API-Key: ${{ secrets.SUPPORT_API_KEY }}`.
+   - Validates that the response contains `status: "success"` and generates an execution report in the GitHub Step Summary.
+
+3. **External Hosted Cron / Webhook Trigger:**
+   ```bash
+   curl -X POST "https://web-production-a65a2102.up.railway.app/api/product/run-weekly" \
+     -H "Content-Type: application/json" \
+     -H "X-API-Key: hitl_live_sk_7f8a9b2c3d4e5f6a1b2c3d4e5f6a7b8c" \
+     -d '{}'
+   ```
+
+4. **Standalone CLI / Worker Trigger:**
+   ```bash
+   # Direct python execution (standalone cron / Docker entrypoint)
+   python scripts/trigger_weekly_schedule.py --direct
+
+   # Or trigger remote API with key
+   python scripts/trigger_weekly_schedule.py --url https://web-production-a65a2102.up.railway.app --api-key hitl_live_sk_7f8a9b2c3d4e5f6a1b2c3d4e5f6a7b8c
+   ```
+
+---
+
 ## Verification & Automated Test Suite
 
-### 1. Run Complete Automated Test Suite (132 Tests)
+### 1. Run Complete Automated Test Suite (142 Tests)
 ```bash
 pytest tests/ -v
 ```
-*Expected Result:* **132 passed** across Phase 0 through Phase 6 with zero regressions.
+*Expected Result:* **142 passed** across Phase 0 through Phase 6 + Live Weekly Schedule with zero regressions.
 
 ### 2. Run 15-Claim Grounding & Source Lineage Audit
 ```bash

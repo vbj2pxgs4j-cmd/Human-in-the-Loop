@@ -1,0 +1,103 @@
+name: Scheduled Weekly Loop Pipeline
+
+on:
+  schedule:
+    # Executes weekly every Monday at 00:00 UTC (05:30 AM IST)
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+    inputs:
+      week_identifier:
+        description: 'Target ISO week identifier (e.g. 2026-W48, leave blank for current week)'
+        required: false
+        default: ''
+
+jobs:
+  run-weekly-loop:
+    name: Trigger Unattended Weekly Loop
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Inspect Execution Context
+        run: |
+          echo "Trigger Source: ${{ github.event_name }}"
+          echo "Target Week: ${{ github.event.inputs.week_identifier || 'Auto-computed ISO Week' }}"
+          echo "Timestamp (UTC): $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+      - name: Trigger Weekly Run via POST /api/product/run-weekly
+        id: trigger_run
+        env:
+          API_BASE_URL: ${{ secrets.API_BASE_URL || 'https://web-production-a65a2102.up.railway.app' }}
+          SUPPORT_API_KEY: ${{ secrets.SUPPORT_API_KEY || 'hitl_live_sk_7f8a9b2c3d4e5f6a1b2c3d4e5f6a7b8c' }}
+          CUSTOM_WEEK: ${{ github.event.inputs.week_identifier }}
+        run: |
+          set -e
+          echo "Target endpoint: ${API_BASE_URL}/api/product/run-weekly"
+
+          # Build JSON payload
+          if [ -n "$CUSTOM_WEEK" ]; then
+            PAYLOAD=$(printf '{"week_identifier":"%s"}' "$CUSTOM_WEEK")
+          else
+            PAYLOAD='{}'
+          fi
+
+          echo "Dispatching authenticated HTTP POST..."
+          RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}\n" \
+            -X POST "${API_BASE_URL}/api/product/run-weekly" \
+            -H "Content-Type: application/json" \
+            -H "X-API-Key: ${SUPPORT_API_KEY}" \
+            -d "${PAYLOAD}")
+
+          BODY=$(echo "$RESPONSE" | sed -e '$d' | grep -v "HTTP_STATUS:")
+          STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS:" | cut -d':' -f2)
+
+          echo "Received HTTP Status: ${STATUS}"
+          echo "Response Body:"
+          echo "${BODY}"
+
+          if [ "$STATUS" -ne 200 ]; then
+            echo "::error::Weekly Loop trigger failed with status ${STATUS}"
+            exit 1
+          fi
+
+          # Parse and validate response fields
+          STATUS_FIELD=$(echo "$BODY" | grep -o '"status":"[^"]*"' | cut -d':' -f2 | tr -d '"')
+          PULSE_ID=$(echo "$BODY" | grep -o '"pulse_id":"[^"]*"' | cut -d':' -f2 | tr -d '"')
+          WORD_COUNT=$(echo "$BODY" | grep -o '"word_count":[0-9]*' | cut -d':' -f2)
+          THEME_COUNT=$(echo "$BODY" | grep -o '"theme_count":[0-9]*' | cut -d':' -f2)
+          EXPLAINER_ID=$(echo "$BODY" | grep -o '"explainer_id":"[^"]*"' | cut -d':' -f2 | tr -d '"')
+          UNATTENDED=$(echo "$BODY" | grep -o '"unattended_execution":true')
+
+          if [ "$STATUS_FIELD" != "success" ]; then
+            echo "::error::API did not return status success"
+            exit 1
+          fi
+
+          if [ -z "$UNATTENDED" ]; then
+            echo "::error::Execution was not flagged unattended"
+            exit 1
+          fi
+
+          # Export outputs for summary step
+          echo "pulse_id=${PULSE_ID}" >> $GITHUB_OUTPUT
+          echo "word_count=${WORD_COUNT}" >> $GITHUB_OUTPUT
+          echo "theme_count=${THEME_COUNT}" >> $GITHUB_OUTPUT
+          echo "explainer_id=${EXPLAINER_ID}" >> $GITHUB_OUTPUT
+
+      - name: Generate Workflow Step Summary
+        if: always()
+        run: |
+          cat <<EOF >> $GITHUB_STEP_SUMMARY
+          ## ⚡ Weekly Loop Pipeline Execution Report
+
+          | Metric | Value |
+          | :--- | :--- |
+          | **Status** | ${{ job.status == 'success' && '✅ SUCCESS' || '❌ FAILED' }} |
+          | **Trigger Source** | ${{ github.event_name }} |
+          | **Pulse Report ID** | \`${{ steps.trigger_run.outputs.pulse_id }}\` |
+          | **Pulse Word Count** | ${{ steps.trigger_run.outputs.word_count }} / 250 words max |
+          | **Thematic Clusters** | ${{ steps.trigger_run.outputs.theme_count }} themes (<= 5 cap) |
+          | **Canonical Explainer ID** | \`${{ steps.trigger_run.outputs.explainer_id }}\` |
+          | **Execution Mode** | 100% Unattended / Automated |
+          | **Execution Timestamp** | $(date -u +'%Y-%m-%dT%H:%M:%SZ') |
+          EOF

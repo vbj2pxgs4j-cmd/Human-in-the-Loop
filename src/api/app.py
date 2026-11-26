@@ -1,6 +1,7 @@
 """FastAPI Gateway Application with CORS, routing, static serving, and health checks."""
 
 import logging
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional
 
@@ -9,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
+from src.agents.weekly.scheduler import get_weekly_scheduler
 from src.api.routes import audit, product, support
 from src.config import Settings, get_settings
 
@@ -16,10 +18,30 @@ logger = logging.getLogger(__name__)
 
 settings = get_settings()
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """FastAPI application lifespan managing in-app WeeklyScheduler background lifecycle."""
+    scheduler = get_weekly_scheduler()
+    if settings.ENABLE_IN_APP_SCHEDULER and settings.ENVIRONMENT.lower() not in ("test", "testing"):
+        try:
+            await scheduler.start()
+            logger.info("In-app WeeklyScheduler initiated on application startup.")
+        except Exception as e:
+            logger.warning("Failed to start in-app WeeklyScheduler: %s", e)
+    yield
+    try:
+        await scheduler.stop()
+        logger.info("In-app WeeklyScheduler stopped on application shutdown.")
+    except Exception as e:
+        logger.warning("Error stopping in-app WeeklyScheduler: %s", e)
+
+
 app = FastAPI(
     title="Human-in-the-Loop AI Assistant Gateway",
     version="1.0.0",
     description="Role-specific HITL API Gateway for Support Specialists, Product Managers, and Compliance Auditors.",
+    lifespan=lifespan,
 )
 
 # ------------------------------------------------------------------------------
