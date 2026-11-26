@@ -172,7 +172,7 @@ class CorpusIndexer:
         if not self.chunks or not query.strip():
             return []
 
-        # 1. Lexical BM25 Scoring
+        # 1. Lexical BM25 Scoring with Query Term Coverage
         query_tokens = simple_tokenize(query)
         if self.bm25 and query_tokens:
             bm25_raw_scores = np.maximum(
@@ -180,7 +180,13 @@ class CorpusIndexer:
             )
             max_bm25 = np.max(bm25_raw_scores)
             if max_bm25 > 0:
-                bm25_scores = bm25_raw_scores / max_bm25
+                bm25_norm = bm25_raw_scores / max_bm25
+                q_set = set(query_tokens)
+                coverage = np.array([
+                    len(q_set.intersection(set(self.tokenized_corpus[i]))) / len(q_set) if q_set else 0.0
+                    for i in range(len(self.chunks))
+                ], dtype=np.float32)
+                bm25_scores = bm25_norm * coverage
             else:
                 bm25_scores = np.zeros(len(self.chunks), dtype=np.float32)
         else:
